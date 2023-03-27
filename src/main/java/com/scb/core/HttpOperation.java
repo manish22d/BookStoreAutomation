@@ -1,6 +1,8 @@
 package com.scb.core;
 
 
+import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.scb.builder.Request;
 import com.scb.utils.ScenarioContext;
 import io.restassured.RestAssured;
@@ -44,6 +46,8 @@ public class HttpOperation {
             case PUT -> requestSpecification.put(request.getEndPoint());
         };
         if (request.isLogging()) response.then().log().all();
+        ExtentCucumberAdapter.addTestStepLog(String.format("API Request : '%s %s' completed with status code : %s",
+                request.getMethod().toString(), request.getEndPoint(), String.valueOf(response.statusCode())));
         context.setContext("response", response);
         return response;
     }

@@ -1,6 +1,6 @@
 Feature: As a user, i want to validate user is able to get book details
 
-  Scenario Outline: User can do a search from the home page
+  Scenario Outline: verify user is able to  get details on individual book
     Given user wants to perform operation on "<book_id>"
     When user triggers get request individual book
     Then transaction should complete successfully
@@ -10,12 +10,12 @@ Feature: As a user, i want to validate user is able to get book details
       | book_id |
       | 1       |
 
-  Scenario Outline: User can do a search from the home page
+  Scenario Outline: verify user is getting correct status code for non existing book
     Given user wants to perform operation on "<book_id>"
     When user triggers get request individual book
-    Then transaction should complete successfully
-    And validate correct book details is retrieved
+    Then transaction completed with not found request
+
 
     Examples:
       | book_id |
-      | 1       |
+      | 500     |

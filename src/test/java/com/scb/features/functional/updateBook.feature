@@ -1,7 +1,7 @@
 Feature: As a User, i want to validate user is able to update book details correcly
 
 
-  Scenario Outline: User can do a search from the home page
+  Scenario Outline: verify user is able to update book details correctly
     Given user wants to perform operation on "<book_id>"
     And user have correct book details
       | id   | name   | author   | publication   | category   | pages   | price   |
